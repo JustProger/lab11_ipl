@@ -11,10 +11,16 @@ class MainController < ApplicationController
   end
 
   def result
-    @calc = Main.result(params)
-    redirect_to main_show_url(id: @calc.id)
-    # redirect_to "#{main_show_url}?#{URI.encode_www_form({ query_number: params[:query_number],
-                                                            # query_sequence: params[:query_sequence]})}"
+    @calc = Main.new(Main.result(params))
+    if @calc.save
+      redirect_to main_show_url(id: @calc.id)
+    else
+        flash[:alert] ||= []
+        @calc.errors.each do |error|
+          flash[:alert] << [-1,error.full_message,nil,error.details[:value]]
+        end
+        redirect_to root_url
+    end
   end
 
   def all

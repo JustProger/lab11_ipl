@@ -35,14 +35,16 @@ class Main < ApplicationRecord
       (!before_mod && after_mod) || (before_mod && !after_mod)
     end
 
-    p sequences = enum.to_a.select { |array| array.any? { |element| is_square?(element) } }
+    sequences = enum.to_a.select { |array| array.any? { |element| is_square?(element) } }
 
-    create query_number: number,
-           query_sequence: params[:query_sequence],
-           sequences: JSON.generate(sequences),
-           maxsequence: JSON.generate(sequences.max_by(&:size)),
-           sequences_number: sequences.size
+    { query_number: number,
+      query_sequence: params[:query_sequence],
+      sequences: JSON.generate(sequences),
+      maxsequence: JSON.generate(sequences.max_by(&:size)),
+      sequences_number: sequences.size }
   end
+
+  private
 
   def self.is_square?(x)
     (Math.sqrt(x) % 1).zero?
