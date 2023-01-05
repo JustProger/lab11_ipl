@@ -6,11 +6,19 @@ class MainController < ApplicationController
   def index; end
 
   def show
-    # @result = [params[:query_number], params[:query_sequence]]
     id = params[:id].to_i
     return unless id && Main.find_by(id:)
 
     @calc = Main.find(id)
+  end
+
+  def delete
+    if Main.all.empty?
+      redirect_to root_path, notice: "В БД нет записей для удаления"
+    else
+      Main.delete_all
+      redirect_to root_path, notice: "Все записи в БД успешно удалены!"
+    end
   end
 
   def result

@@ -1,5 +1,7 @@
 <h1>Main#show</h1>
 <p>Find me in app/views/main/show.html.erb</p>
+<p>Введенное число: <b><%= @calc.query_number %></b></p>
+<p>Введенная последовательность: <b><%= @calc.query_sequence %></b> </p>
 <h3>Результат:</h3>
 <% if JSON.parse(@calc.sequences).empty? %>
   <h1>последовательностей не найдено</h1>
@@ -19,5 +21,6 @@
     </tr>
   </table>
 <% end %>
+<p><%= button_to "Удалить запись", main_delete_all_url %></p>
 
 <%= link_to "Вернуться на главную страницу", root_url %>

@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .all_records_ul > li {
+    border-bottom: 3px solid;
+ }
+
+ .all_records_ul > li:last-child {
+    border-bottom: 0;
+ }

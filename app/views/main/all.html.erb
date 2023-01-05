@@ -1,25 +1,29 @@
 <h1>Main#all</h1>
 <p>Find me in app/views/main/all.html.erb</p>
-<ul>
+<ul class="all_records_ul">
   <% @calcs.each do |calc| %>
     <li>
       <p>Введенное число: <b><%= calc.query_number %></b></p>
       <p>Введенная последовательность: <b><%= calc.query_sequence %></b> </p>
       <h3>Результат:</h3>
-      <table>
-        <tr>
-          <td>последовательности</td>
-          <td><%= calc.sequences %></td>
-        </tr>
-        <tr>
-          <td>максимальная последовательность</td>
-          <td><%= calc.maxsequence %></td>
-        </tr>
-        <tr>
-          <td>количество последовательностей</td>
-          <td><%= calc.sequences_number %></td>
-        </tr>
-      </table>
+        <% if JSON.parse(calc.sequences).empty? %>
+          <h1>последовательностей не найдено</h1>
+        <% else %>
+          <table>
+            <tr>
+              <td>последовательности</td>
+              <td><%= calc.sequences %></td>
+            </tr>
+            <tr>
+              <td>максимальная последовательность</td>
+              <td><%= calc.maxsequence %></td>
+            </tr>
+            <tr>
+              <td>количество последовательностей</td>
+              <td><%= calc.sequences_number %></td>
+            </tr>
+          </table>
+        <% end %>
     </li>
   <% end %>
 </ul>
