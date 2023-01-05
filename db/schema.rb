@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,16 +12,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_120721) do
-  create_table "mains", force: :cascade do |t|
-    t.integer "query_number", null: false
-    t.string "query_sequence", null: false
-    t.string "sequences", null: false
-    t.string "maxsequence", null: false
-    t.integer "sequences_number", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["query_sequence"], name: "index_mains_on_query_sequence", unique: true
+ActiveRecord::Schema[7.0].define(version: 20_230_105_120_721) do
+  create_table 'mains', force: :cascade do |t|
+    t.integer 'query_number', null: false
+    t.string 'query_sequence', null: false
+    t.string 'sequences', null: false
+    t.string 'maxsequence', null: false
+    t.integer 'sequences_number', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['query_sequence'], name: 'index_mains_on_query_sequence', unique: true
   end
-
 end

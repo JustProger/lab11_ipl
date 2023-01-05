@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'main#index'
   get 'main/show/:id', to: 'main#show', as: :main_show

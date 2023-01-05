@@ -34,8 +34,8 @@ class Main < ApplicationRecord
     number = params[:query_number].to_i
     array = params[:query_sequence].split.map(&:to_i)
     enum = array.slice_when do |before, after|
-      before_mod = self.is_square?(before)
-      after_mod = self.is_square?(after)
+      before_mod = is_square?(before)
+      after_mod = is_square?(after)
       (!before_mod && after_mod) || (before_mod && !after_mod)
     end
 
@@ -47,8 +47,6 @@ class Main < ApplicationRecord
       maxsequence: JSON.generate(sequences.max_by(&:size)),
       sequences_number: sequences.size }
   end
-
-  private
 
   def self.is_square?(x)
     (Math.sqrt(x) % 1).zero?
