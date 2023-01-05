@@ -18,7 +18,7 @@ class Main < ApplicationRecord
   validates :query_sequence, uniqueness: true
   # validates :sequences, :maxsequence, :sequences_number, presence: true
 
-  validates :query_number, format: { with: /\d/, message: 'должно быть натуральным числом' }
+  validates :query_number, format: { with: /\A[\d]+\z/, message: 'должно быть натуральным числом' }
 
   @ptrn_list_and_error_messages = [
     { ptrn: /\A[\s\d]+\z/, err_msg: 'состоит только из натуральных чисел, разделённых пробелами' }

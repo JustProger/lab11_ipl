@@ -69,6 +69,8 @@ group :development do
   gem 'web-console'
   gem 'capybara'
   gem 'webdrivers'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
   gem 'faker'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
