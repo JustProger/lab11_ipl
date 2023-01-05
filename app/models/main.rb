@@ -10,6 +10,10 @@ class EquationOfNumberAndSequenceNumberValidator < ActiveModel::Validator
 end
 
 class Main < ApplicationRecord
+  # include ActiveModel::Serializers::Xml
+  # Сколько элементов выводить на страницу по умолчанию - просто чтобы быстрее увидеть пагинацию.
+  paginates_per 5
+
   validates :query_number, :query_sequence, presence: { message: 'не может быть пустым' } # проверка на обязательное наличие полей
   validates :query_sequence, uniqueness: true
   # validates :sequences, :maxsequence, :sequences_number, presence: true

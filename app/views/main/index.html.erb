@@ -15,3 +15,6 @@
   <br>
   <%= form.submit "Обработать:", id: 'calculate-btn' %>
 <% end %>
+
+<p><%= link_to "Просмотреть все записи в html", main_all_url %></p>
+<p><%= link_to "Просмотреть все записи в xml", main_all_url(format: :xml) %></p>
