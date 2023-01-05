@@ -7,17 +7,29 @@ class MainController < ApplicationController
 
   def show
     id = params[:id].to_i
-    return unless id && Main.find_by(id:)
+    calc = Main.find_by(id:)
+    return unless id && calc
 
-    @calc = Main.find(id)
+    @calc = calc
   end
 
-  def delete
+  def deleteall
     if Main.all.empty?
       redirect_to root_path, notice: "В БД нет записей для удаления"
     else
       Main.delete_all
       redirect_to root_path, notice: "Все записи в БД успешно удалены!"
+    end
+  end
+
+  def delete
+    id = params[:id].to_i
+    calc_to_delete = Main.find_by(id:)
+    if id && calc_to_delete
+      calc_to_delete.delete
+      redirect_to request.referrer
+    else
+      redirect_to root_path, notice: "Что-то пошло не так: запись не была удалена..."
     end
   end
 
@@ -34,7 +46,7 @@ class MainController < ApplicationController
     end
   end
 
-  def all
+  def showall
     respond_to do |format|
       # format.xml { render xml: render_client(Main.all.to_xml) }
       # Раздокументируй строку выше и задокументируй строку ниже, чтобы увидеть xml в html виде
