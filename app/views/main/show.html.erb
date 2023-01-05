@@ -1,4 +1,31 @@
 <h1>Main#show</h1>
 <p>Find me in app/views/main/show.html.erb</p>
-<h2>Result:</h2>
-<p><%= @result %></p>
+<% if @calc.valid? %>
+  <h2>Результат</h2>
+  <h3>Полученный ответ:</h3>
+  <% if JSON.parse(@calc.sequences).empty? %>
+    <h1>последовательностей не найдено</h1>
+  <% else %>
+    <table>
+      <tr>
+        <td>последовательности</td>
+        <td><%= @calc.sequences %></td>
+      </tr>
+      <tr>
+        <td>максимальная последовательность</td>
+        <td><%= @calc.maxsequence %></td>
+      </tr>
+      <tr>
+        <td>количество последовательностей</td>
+        <td><%= @calc.sequences_number %></td>
+      </tr>
+    </table>
+  <% end %>
+<% else %>
+  <h2>Ошибки ввода:<h2>
+  <ul>
+    <% @calc.errors.each do |error| %>
+	  <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+<% end %>
