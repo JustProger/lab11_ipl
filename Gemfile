@@ -66,12 +66,12 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
   gem 'capybara'
-  gem 'webdrivers'
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
   gem 'faker'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
+  gem 'web-console'
+  gem 'webdrivers'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

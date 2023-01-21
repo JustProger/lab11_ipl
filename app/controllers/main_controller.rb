@@ -15,10 +15,10 @@ class MainController < ApplicationController
 
   def deleteall
     if Main.all.empty?
-      redirect_to root_path, notice: "В БД нет записей для удаления"
+      redirect_to root_path, notice: 'В БД нет записей для удаления'
     else
       Main.delete_all
-      redirect_to root_path, notice: "Все записи в БД успешно удалены!"
+      redirect_to root_path, notice: 'Все записи в БД успешно удалены!'
     end
   end
 
@@ -29,7 +29,7 @@ class MainController < ApplicationController
       calc_to_delete.delete
       redirect_to request.referrer
     else
-      redirect_to root_path, notice: "Что-то пошло не так: запись не была удалена..."
+      redirect_to root_path, notice: 'Что-то пошло не так: запись не была удалена...'
     end
   end
 
