@@ -27,7 +27,7 @@ class MainController < ApplicationController
     calc_to_delete = Main.find_by(id:)
     if id && calc_to_delete
       calc_to_delete.delete
-      redirect_to request.referrer
+      redirect_to request.referer
     else
       redirect_to root_path, notice: 'Что-то пошло не так: запись не была удалена...'
     end
